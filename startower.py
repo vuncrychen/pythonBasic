@@ -9,4 +9,3 @@ while i <= size:
 # for
 for i in range(size):
     print('*' * (i+1))
-
