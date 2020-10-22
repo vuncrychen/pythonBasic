@@ -1,14 +1,22 @@
+# 猜一組四位數, 會收到 XAYB, X 代表猜的數字中, 位置以及數值皆正確的 數量, Y 代表猜的數字中. 位置不正確但數值正確的 數量
+
 import random
 
 answer = random.sample([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 4)
 
-# print(answer)
+# print("Answer: " + str(answer))
+
+input_guess = input("請猜出正確的四位數: ")
 
 endgame = 0
+chance = 10
+message = 1
 
 while endgame != 1:
 
-    input_guess = input("請猜出正確的四位數: ")
+    if chance == 0:
+        message = 0
+        break
 
     user_guess = [int(x) for x in input_guess]
 
@@ -38,4 +46,11 @@ while endgame != 1:
 
     print(str(a) + "A" + str(b) + "B")
 
-print("you won!")
+    input_guess = input("猜錯啦! 剩餘 " + str(chance) + " 次機會: ")
+
+    chance -= 1
+
+if message:
+    print("恭喜你! 你贏了~")
+else:
+    print("很抱歉! 你輸了~")
